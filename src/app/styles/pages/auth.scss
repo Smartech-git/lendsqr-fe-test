@@ -1,0 +1,70 @@
+@use "../base/variables" as vars;
+
+.auth-wrapper {
+  min-height: 100dvh;
+  padding: var(--spacing-xl) var(--spacing-2pg);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @media (max-width: vars.$media-query-md) {
+    gap: 128px;
+  }
+}
+
+.auth-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: var(--spacing-4pg);
+
+  @media (max-width: vars.$media-query-md) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.auth-content img {
+  width: 100%;
+  height: fit-content;
+  margin-top: var(--spacing-lg);
+}
+
+.auth-content > picture {
+  @media (max-width: vars.$media-query-md) {
+    display: none;
+  }
+}
+
+.auth-form-wrapper,
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.auth-form-title > h1 {
+  color: var(--color-secondary);
+  font-size: 40px;
+  font-weight: 700;
+}
+.auth-form-title {
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-form-title > p {
+  color: var(--color-gray-900);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.auth-form .forgot-password {
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+}
+
+.auth-form .submit {
+  margin-top: var(--spacing-sm);
+}

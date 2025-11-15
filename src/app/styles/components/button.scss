@@ -60,7 +60,10 @@
 }
 
 .btn--flat {
-  color: var(--color-primary-light);
+  color: var(--color-primary);
+  height: auto !important;
+  padding: 2px !important;
+  border-radius: 0 !important;
 }
 
 .btn--link {
@@ -70,6 +73,7 @@
   padding: 0 !important;
   border-radius: 0 !important;
   line-height: normal;
+  width: fit-content !important;
   border-bottom: 1.5px solid transparent;
 
   &:hover {

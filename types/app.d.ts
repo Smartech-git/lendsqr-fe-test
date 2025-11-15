@@ -12,3 +12,5 @@ type Options = {
   name?: string;
   children?: Options;
 }[];
+
+type CookiesKey = "Lendsqr-key";

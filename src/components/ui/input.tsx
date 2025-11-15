@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { useState, useRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/";
 
 const inputVariants = cva("input", {
   variants: {
@@ -96,11 +96,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, input
           "is-filled": isFilled,
         })}
         data-placeholder={placeholder}>
-        {startContent && <div className='input-addon input-addon--start'>{startContent}</div>}
+        {startContent && <div className='input-addon input-addon-start'>{startContent}</div>}
 
         <input ref={inputRef} disabled={disabled as boolean} type={type} className='input-field' onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} {...props} />
 
-        {endContent && <div className='input-addon input-addon--end'>{endContent}</div>}
+        {endContent && <div className='input-addon input-addon-end'>{endContent}</div>}
       </div>
 
       {error && <p className='input-error'>{error}</p>}
@@ -110,4 +110,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, input
 
 Input.displayName = "Input";
 
-export { Input };
+export default Input;

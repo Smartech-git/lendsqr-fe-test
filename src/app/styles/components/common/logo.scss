@@ -1,0 +1,12 @@
+.logo {
+  position: relative;
+  top: var(--spacing-sm);
+  z-index: 20;
+  width: 173px;
+  height: fit-content;
+  display: block;
+
+  @media (min-width: 640px) {
+    width: 173px;
+  }
+}

@@ -98,7 +98,7 @@
 }
 
 .input.is-disabled {
-  background-color: var(--color-gray-100);
+  background-color: var(--color-surface);
   color: var(--color-gray-600);
   cursor: not-allowed;
 }
@@ -115,13 +115,17 @@
   min-height: 1.5rem;
 }
 
-.input-addon--start {
+.input-addon-start {
   margin-right: var(--spacing-xxs, 0.25rem);
 }
 
-.input-addon--end {
+.input-addon-end {
   margin-left: auto;
   margin-right: 0;
+}
+
+.input-addon-end > button {
+  font-size: var(--font-size-xs);
 }
 
 .input-field {

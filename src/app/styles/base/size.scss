@@ -1,14 +1,19 @@
 :root {
-  --spacing-0: 0;
+  --spacing-pg: 3dvw;
+  --spacing-2pg: 6dvw;
+  --spacing-3pg: 9dvw;
+  --spacing-4pg: 12dvw;
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 3rem;
+  --spacing-2xl: 6rem;
 
   --button-height-default: 3rem;
   --button-height-md: 2.5rem;
   --button-height-sm: 2.5rem;
   --button-size-icon: 2.5rem;
 }
+

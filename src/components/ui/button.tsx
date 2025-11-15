@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 import { Icon } from "@/components/icons";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/";
 
 const buttonVariants = cva("btn", {
   variants: {
@@ -23,7 +23,7 @@ const buttonVariants = cva("btn", {
     },
   },
   defaultVariants: {
-    variant: "outlined",
+    variant: "filled",
     size: "default",
   },
 });
@@ -53,4 +53,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
 });
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+export default Button;

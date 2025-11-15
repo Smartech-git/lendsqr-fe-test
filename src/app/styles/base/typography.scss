@@ -7,7 +7,8 @@
   --font-weight-bold: 700;
 
   --font-size-base: 1rem;
-  --font-size-sm: 0.775rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
 
   --line-height-base: 1.5;
 
@@ -17,6 +18,7 @@
 .text-capitalize {
   text-transform: capitalize !important;
 }
+
 .text-uppercase {
   text-transform: uppercase !important;
 }

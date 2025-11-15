@@ -3,8 +3,8 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 
-import { Button, ButtonProps } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import Button, { ButtonProps } from "@/components/ui/button";
+import { cn } from "@/lib/utils/";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 const DropdownMenuGroup = DropdownMenuPrimitive.Group;
