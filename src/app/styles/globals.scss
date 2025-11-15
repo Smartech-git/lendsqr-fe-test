@@ -1,7 +1,8 @@
-@use "../base";
-@use "../components";
-@use "../pages";
-@use "../utils";
+@use "./base";
+@use "./components";
+@use "./pages";
+@use "./utils";
+@use "./layout";
 
 *,
 *::before,
