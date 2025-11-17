@@ -1,7 +1,15 @@
+@use "../../base/variables" as vars;
+
 .header-search {
   display: flex;
   margin-left: var(--spacing-2pg);
   width: 400px;
+}
+
+.header-search .input-group {
+  @media (max-width: vars.$media-query-md) {
+    display: none;
+  }
 }
 
 .header-search .input {
@@ -13,7 +21,11 @@
 }
 
 .header-search .btn {
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  width: 56px;
+  width: 48px;
+
+  @media (min-width: vars.$media-query-md) {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 56px;
+  }
 }

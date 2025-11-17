@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import SideNavWrapper from "@/components/layout/side-nav-wrapper";
 import Header from "@/components/nav/header";
 import SideNav from "@/components/nav/side-nav";
 import { sideNavs } from "@/constants/side-nav";
@@ -12,7 +13,9 @@ export default function AppLayout({ children }: Props) {
     <div className='app-layout'>
       <Header />
       <div className='app-layout-content'>
-        <SideNav navs={sideNavs} />
+        <SideNavWrapper>
+          <SideNav navs={sideNavs} />
+        </SideNavWrapper>
         {children}
       </div>
     </div>

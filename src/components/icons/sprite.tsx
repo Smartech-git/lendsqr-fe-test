@@ -91,6 +91,11 @@ export const SvgSprite = () => (
         <path fill='currentColor' d='M8.25 16.688a.938.938 0 1 0 0 1.875.938.938 0 0 0 0-1.875Zm0-3.75a.938.938 0 1 0 0 1.875.938.938 0 0 0 0-1.876Zm0-3.75a.937.937 0 1 0 0 1.874.937.937 0 0 0 0-1.874ZM14.5 4.5a2.5 2.5 0 0 0-5 0A2.5 2.5 0 0 0 7 7h10a2.5 2.5 0 0 0-2.5-2.5Zm-2.5.938a.937.937 0 1 1 0-1.875.937.937 0 0 1 0 1.874Z' />
       </symbol>
 
+      <symbol id='icon-close' viewBox='0 0 24 24'>
+        <path d='M7.5 7.5L16.5 16.5' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round' />
+        <path d='M7.5 16.5L16.5 7.5' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round' />
+      </symbol>
+
       <symbol id='icon-coins-solid' viewBox='0 0 24 24'>
         <path
           fill='currentColor'
@@ -133,6 +138,10 @@ export const SvgSprite = () => (
         />
         <path fill='currentColor' d='M10.611 4.083h2.778l1.029-1.543a.347.347 0 0 0-.29-.54H9.873a.347.347 0 0 0-.289.54l1.028 1.543Zm2.778.695H10.61c-4.392 2.504-4.165 5.83-4.165 6.25 0 1.15 1.066 2.083 2.38 2.083h6.348c1.314 0 2.38-.933 2.38-2.083 0-.412.203-3.76-4.165-6.25Z' opacity={0.4} />
         <path fill='currentColor' d='M13.758 4.257v.347a.174.174 0 0 1-.174.174h-3.168a.174.174 0 0 1-.174-.174v-.347a.174.174 0 0 1 .174-.174h3.168a.174.174 0 0 1 .174.174ZM10.524 10.475V8.903h-.607v-.476h.607V6.861h.86l.854 1.566h.58V6.861h.657v1.566h.608v.476h-.608v1.572h-.86l-.864-1.572h-.57v1.572h-.657Zm.657-2.097v.049h.307l-.318-.64h-.005l.016.59Zm1.648 1.188h.011l-.022-.57v-.093h-.323l.022.033.312.63Z' />
+      </symbol>
+
+      <symbol id='icon-menu' viewBox='0 0 24 24'>
+        <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={1.5} d='M4.5 6.5h15M4.5 12h15m-15 5.5h15' />
       </symbol>
 
       <symbol id='icon-notification' viewBox='0 0 24 24'>

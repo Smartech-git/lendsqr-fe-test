@@ -9,23 +9,21 @@ interface Props {
 
 export default function SideNav({ navs }: Props) {
   return (
-    <div className='side-nav-wrapper hide-scrollbar'>
-      <div className='side-nav-content'>
-        <SwitchOrg />
-        {navs.map((item, idx) => (
-          <div key={idx} className='side-nav-content'>
-            {item.title && <h1>{item.title}</h1>}
-            <div className='side-nav-content'>
-              {item.navs.map((item) => (
-                <SideNavItem key={item.label} path={item.path} icon={item.icon} label={item.label} />
-              ))}
-            </div>
+    <div className='side-nav-content'>
+      <SwitchOrg />
+      {navs.map((item, idx) => (
+        <div key={idx} className='side-nav-content'>
+          {item.title && <h1>{item.title}</h1>}
+          <div className='side-nav-content'>
+            {item.navs.map((item) => (
+              <SideNavItem key={item.label} path={item.path} icon={item.icon} label={item.label} />
+            ))}
           </div>
-        ))}
-        <div className='side-nav-content-bottom side-nav-content'>
-          <LogOut />
-          <span>v1.2.0</span>
         </div>
+      ))}
+      <div className='side-nav-content-bottom side-nav-content'>
+        <LogOut />
+        <span>v1.2.0</span>
       </div>
     </div>
   );

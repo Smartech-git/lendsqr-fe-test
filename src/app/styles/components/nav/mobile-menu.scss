@@ -1,0 +1,13 @@
+.mobile-nav-wrapper {
+  padding-bottom: var(--spacing-xl);
+  position: relative;
+  height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.mobile-nav-wrapper .side-nav,
+.mobile-nav-wrapper .side-nav-content h1 {
+  padding: 0 var(--spacing-2pg);
+}
