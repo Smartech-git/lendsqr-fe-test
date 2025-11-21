@@ -4,9 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { useState, useRef } from "react";
 
+import { Icon } from "@/components/icons";
 import { cn } from "@/lib/utils/";
+import "@/app/styles/components/ui/date-picker.scss";
 
-const inputVariants = cva("input", {
+const datePickerVariants = cva("input", {
   variants: {
     variant: {
       outlined: "input--outlined",
@@ -34,7 +36,7 @@ const inputVariants = cva("input", {
 
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size">;
 
-export interface InputProps extends NativeInputProps, VariantProps<typeof inputVariants> {
+export interface InputProps extends NativeInputProps, VariantProps<typeof datePickerVariants> {
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
   inputWrapperClassname?: string;
@@ -44,7 +46,7 @@ export interface InputProps extends NativeInputProps, VariantProps<typeof inputV
   animatePlaceholder?: boolean;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, inputWrapperClassname, animatePlaceholder = true, type, startContent, endContent, placeholder, isInvalid = false, variant, size = "default", disabled = false, error, onChange, onFocus, onBlur, value, defaultValue, label, ...props }, ref) => {
+const DatePicker = React.forwardRef<HTMLInputElement, InputProps>(({ className, inputWrapperClassname, animatePlaceholder = true, type, startContent, endContent, placeholder, isInvalid = false, variant, size = "default", disabled = false, error, onChange, onFocus, onBlur, value, defaultValue, label, ...props }, ref) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(() => {
     const initialValue = value ?? defaultValue;
@@ -98,7 +100,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, input
       {label && <p className='element-label'>{label}</p>}
       <div
         className={cn(
-          inputVariants({
+          datePickerVariants({
             variant,
             disabled: disabled ? true : false,
             isInvalid: isInvalid ? true : false,
@@ -110,12 +112,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, input
             "is-focused": isFocused,
             "is-filled": isFilled,
           }
-        )}
-        data-placeholder={placeholder}>
+        )}>
         {startContent && <div className='input-addon input-addon-start'>{startContent}</div>}
 
-        <input ref={inputRef} disabled={disabled as boolean} type={type} className='input-field' onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder={animatePlaceholder ? undefined : placeholder} {...props} />
+        <input ref={inputRef} disabled={disabled as boolean} type='date' className='input-field date-picker-field' onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} {...props} />
 
+        <div className='input-addon input-addon-end date-picker-icon'>
+          <Icon name='icon-calender' width={16} height={16} />
+        </div>
         {endContent && <div className='input-addon input-addon-end'>{endContent}</div>}
       </div>
 
@@ -124,6 +128,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, input
   );
 });
 
-Input.displayName = "Input";
+DatePicker.displayName = "DatePicker";
 
-export default Input;
+export default DatePicker;

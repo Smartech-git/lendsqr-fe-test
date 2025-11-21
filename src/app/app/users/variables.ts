@@ -265,3 +265,45 @@ export const users: UsersData[] = [
     status: "Blacklisted",
   },
 ];
+
+export const organization: Options = [
+  {
+    label: "Globex Corp.",
+    value: "Globex Corp.",
+  },
+  {
+    label: "Wayne Enterprises",
+    value: "Wayne Enterprises",
+  },
+  {
+    label: "Techtronix",
+    value: "Techtronix",
+  },
+  {
+    label: "Black Mesa",
+    value: "Black Mesa",
+  },
+  {
+    label: "Acme Inc.",
+    value: "Acme Inc.",
+  },
+];
+
+export const status: Options = [
+  {
+    label: "Active",
+    value: "Active",
+  },
+  {
+    label: "Inactive",
+    value: "Inactive",
+  },
+  {
+    label: "Pending",
+    value: "Pending",
+  },
+  {
+    label: "Blacklisted",
+    value: "Blacklisted",
+  },
+];

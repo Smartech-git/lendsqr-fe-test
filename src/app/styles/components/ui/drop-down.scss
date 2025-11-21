@@ -3,6 +3,10 @@ button {
   all: unset;
 }
 
+.dropdown-menu-content-inner {
+  display: flex;
+  flex-direction: column;
+}
 .dropdown-menu-sub-trigger[data-state="open"] {
   background-color: var(--color-primary-light);
   color: var(--color-secondary);
