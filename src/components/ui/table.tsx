@@ -23,7 +23,7 @@ interface Props<T extends { key?: string | number; id?: string | number }> {
 export default function Table<T extends { key?: string | number; id?: string | number }>({ data, renderColumn, columns, renderCell, bottomContent }: Props<T>) {
   return (
     <div className='table-base'>
-      <div className='table-wrapper'>
+      <div className='table-wrapper card'>
         <table className='table'>
           <thead>
             <tr className='table-thead-tr'>

@@ -62,15 +62,15 @@ export default function SignInForm() {
         isInvalid={!!errors.password}
         disabled={isPending}
         endContent={
-          <Button type='button' className='text-uppercase password-end-content' variant='flat' onClick={() => setShowPassword((prev) => !prev)}>
+          <Button type='button' className='uppercase password-end-content' variant='flat' onClick={() => setShowPassword((prev) => !prev)}>
             {showPassword ? "Hide" : "Show"}
           </Button>
         }
       />
-      <Button className='text-uppercase forgot-password' variant='link' disabled={isPending}>
+      <Button className='uppercase forgot-password' variant='link' disabled={isPending}>
         Forgot password?
       </Button>
-      <Button type='submit' className='text-uppercase submit' isLoading={isPending} disabled={isPending || isFormEmpty}>
+      <Button type='submit' className='uppercase submit' isLoading={isPending} disabled={isPending || isFormEmpty}>
         Log in
       </Button>
     </form>

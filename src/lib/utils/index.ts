@@ -4,8 +4,9 @@ export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
 }
 
-export const formatNumber = (num: number) => {
-  return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const formatNumber = (num: number, useToFixed: boolean = true) => {
+  const strNum = useToFixed ? num.toFixed(2) : String(num);
+  return strNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 /**

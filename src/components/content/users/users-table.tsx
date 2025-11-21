@@ -10,10 +10,8 @@ import Pagination from "@/components/ui/pagination";
 import Table, { Column } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-
 import UsersTableFilter from "./users-table-filter";
 import UsersTablePerPage from "./users-table-per-page";
-
 
 export default function UsersTable() {
   const renderColumn = useCallback((column: Column) => {
@@ -35,7 +33,7 @@ export default function UsersTable() {
       case "status":
         return <Chip status={item.status} />;
       case "action":
-        return <UsersTableActions />;
+        return <UsersTableActions userId={item.id} />;
       default:
         return null;
     }

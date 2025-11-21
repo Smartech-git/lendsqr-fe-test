@@ -307,3 +307,58 @@ export const status: Options = [
     value: "Blacklisted",
   },
 ];
+
+export type UserDetailsBlock = {
+  title: string;
+  value: string;
+};
+
+export type UserDetailsSection = {
+  title: string;
+  blocks: UserDetailsBlock[];
+};
+
+export const userDetailsData: UserDetailsSection[] = [
+  {
+    title: "Personal Information",
+    blocks: [
+      { title: "FULL NAME", value: "Grace Effiom" },
+      { title: "PHONE NUMBER", value: "07060780922" },
+      { title: "EMAIL ADDRESS", value: "grace@gmail.com" },
+      { title: "BVN", value: "07060780922" },
+      { title: "GENDER", value: "Female" },
+      { title: "MARITAL STATUS", value: "Single" },
+      { title: "CHILDREN", value: "None" },
+      { title: "TYPE OF RESIDENCE", value: "Parent's Apartment" },
+    ],
+  },
+  {
+    title: "Education and Employment",
+    blocks: [
+      { title: "LEVEL OF EDUCATION", value: "B.Sc" },
+      { title: "EMPLOYMENT STATUS", value: "Employed" },
+      { title: "SECTOR OF EMPLOYMENT", value: "FinTech" },
+      { title: "DURATION OF EMPLOYMENT", value: "2 years" },
+      { title: "OFFICE EMAIL", value: "grace@lendsqr.com" },
+      { title: "MONTHLY INCOME", value: "₦200,000.00- ₦400,000.00" },
+      { title: "LOAN REPAYMENT", value: "40,000" },
+    ],
+  },
+  {
+    title: "Socials",
+    blocks: [
+      { title: "TWITTER", value: "@grace_effiom" },
+      { title: "FACEBOOK", value: "Grace Effiom" },
+      { title: "INSTAGRAM", value: "@grace_effiom" },
+    ],
+  },
+  {
+    title: "Guarantor",
+    blocks: [
+      { title: "FULL NAME", value: "Debby Ogana" },
+      { title: "PHONE NUMBER", value: "07060780922" },
+      { title: "EMAIL ADDRESS", value: "debby@gmail.com" },
+      { title: "RELATIONSHIP", value: "Sister" },
+    ],
+  },
+];

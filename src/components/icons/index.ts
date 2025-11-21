@@ -7,6 +7,7 @@ export const ICON_IDS = {
   arrowLeft: "icon-arrow-left",
   arrowRight: "icon-arrow-right",
   arrowUp: "icon-arrow-up",
+  back: "icon-back",
   badgePercent01: "icon-badge-percent-01",
   bankSavings: "icon-bank-savings",
   briefcase: "icon-briefcase",

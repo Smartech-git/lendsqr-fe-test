@@ -18,12 +18,12 @@ interface MetricProps {
 }
 const Metric = ({ item, iconWrapperClassName }: MetricProps) => {
   return (
-    <div className='users-metric'>
+    <div className='users-metric card'>
       <div className={cn("users-metric-icon-wrapper", iconWrapperClassName)}>
         <Icon name={item.icon} width={22} height={22} />
       </div>
       <h1>{item.title}</h1>
-      <p>{formatNumber(item.value)}</p>
+      <p>{formatNumber(item.value, false)}</p>
     </div>
   );
 };

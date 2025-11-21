@@ -1,5 +1,5 @@
-@use "../base/variables" as vars;
-@use "../utils";
+@use "../../base/variables" as vars;
+@use "../../utils";
 
 .users-metrics-container {
   width: 100%;
@@ -17,13 +17,6 @@
   background-color: var(--color-surface);
   flex-direction: column;
   gap: var(--spacing-base);
-  border-radius: 4px;
-  border: 1px solid var(--color-secondary-60);
-  box-shadow: var(--shadow-default);
-
-  @media (max-width: vars.$media-query-sm) {
-    padding: var(--spacing-base);
-  }
 }
 
 .users-metric-icon-wrapper {

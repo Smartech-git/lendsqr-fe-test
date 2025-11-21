@@ -1,3 +1,5 @@
+@use "../base/variables" as vars;
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -17,4 +19,15 @@
 
 .text-nowrap {
   white-space: nowrap;
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid var(--color-secondary-60);
+  box-shadow: var(--shadow-default);
+  padding: var(--spacing-lg);
+
+  @media (max-width: vars.$media-query-sm) {
+    padding: var(--spacing-base);
+  }
 }
