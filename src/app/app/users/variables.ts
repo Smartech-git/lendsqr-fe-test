@@ -318,6 +318,24 @@ export type UserDetailsSection = {
   blocks: UserDetailsBlock[];
 };
 
+export type UserProfileData = {
+  fullName: string;
+  userId: string;
+  userTier: number;
+  accountBalance: number;
+  accountNumber: string;
+  bankName: string;
+};
+
+export const userProfileData: UserProfileData = {
+  fullName: "Grace Effiom",
+  userId: "LSQFf587g90",
+  userTier: 1,
+  accountBalance: 200000,
+  accountNumber: "9912345678",
+  bankName: "Providus Bank",
+};
+
 export const userDetailsData: UserDetailsSection[] = [
   {
     title: "Personal Information",

@@ -52,9 +52,8 @@ export default function SignInForm() {
 
   return (
     <form className='auth-form' onSubmit={onSubmit}>
-      <Input label='Email' type='email' placeholder={`Email`} {...register("email")} error={errors.email?.message} isInvalid={!!errors.email} disabled={isPending} />
+      <Input type='email' placeholder={`Email`} {...register("email")} error={errors.email?.message} isInvalid={!!errors.email} disabled={isPending} />
       <Input
-        label='Password'
         type={showPassword ? "text" : "password"}
         placeholder={`Password`}
         {...register("password")}
