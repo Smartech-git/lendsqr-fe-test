@@ -42,6 +42,9 @@ This project is a comprehensive loan management software dashboard designed for 
 - 📱 **Progressive UI** - Radix UI components for accessible and performant interactions
 - 🎭 **SVG Sprite System** - Optimized icon management
 - 📄 **Pagination** - User-friendly data pagination with react-paginate
+- 💾 **IndexedDB Caching** - Client-side user details caching for improved performance
+- 🔄 **SWR Integration** - Data fetching with stale-while-revalidate pattern
+- ⭐ **Star Ratings** - Visual user ratings with react-awesome-stars-rating
 
 ## 🛠 Tech Stack
 
@@ -64,6 +67,7 @@ This project is a comprehensive loan management software dashboard designed for 
 - **@hookform/resolvers**: Integration layer
 
 ### Data Fetching
+- **SWR**: 2.3.6 - React Hooks for data fetching with caching
 - **Axios**: 1.13.2 - HTTP client with retry logic
 - **Native Fetch API**: Server-side requests with timeout handling
 
@@ -73,6 +77,8 @@ This project is a comprehensive loan management software dashboard designed for 
 - **class-variance-authority**: Component variant management
 - **clsx**: Conditional class names
 - **jose**: JWT token handling
+- **react-awesome-stars-rating**: Star rating component
+- **react-stately**: State management for UI components
 
 ### Development Tools
 - **ESLint**: Code linting with Next.js config
@@ -95,6 +101,8 @@ This project is a comprehensive loan management software dashboard designed for 
 │   │   ├── (auth)/          # Authentication routes
 │   │   ├── app/             # Protected app routes
 │   │   │   └── users/       # User management pages
+│   │   │       └── [id]/    # Dynamic user detail pages
+│   │   │           └── documents/ # User documents page
 │   │   ├── styles/          # Global and component styles
 │   │   │   ├── base/        # Base styles (colors, typography, animations)
 │   │   │   ├── components/  # Component-specific styles
@@ -110,23 +118,30 @@ This project is a comprehensive loan management software dashboard designed for 
 │   │   │   ├── auth/        # Authentication forms
 │   │   │   └── users/       # User management components
 │   │   ├── icons/           # SVG sprite system
+│   │   ├── layouts/         # Layout wrapper components
 │   │   ├── nav/             # Navigation components
-│   │   └── ui/              # Base UI components (Table, Dialog, etc.)
+│   │   └── ui/              # Base UI components (Table, Dialog, Rating, etc.)
 │   ├── constants/           # Application constants
 │   │   ├── side-nav.ts      # Navigation configuration
 │   │   └── user-details-nav.ts
 │   ├── hooks/               # Custom React hooks
-│   │   └── use-hooks-form.ts
+│   │   ├── use-hooks-form.ts
+│   │   └── use-infinite-API.ts # SWR infinite loading hook
+│   ├── indexedDB/           # Client-side database management
+│   │   ├── user-details-cache.ts # User details caching logic
+│   │   └── utils.ts         # IndexedDB utilities
 │   ├── lib/
 │   │   ├── api/             # API utilities
 │   │   │   ├── request.ts   # Fetch and Axios wrappers with retry
 │   │   │   └── utils.ts     # API helpers
 │   │   ├── cookies/         # Cookie management
-│   │   ├── utils/           # General utilities
-│   │   └── types.ts         # Shared types
-│   ├── validations/         # Zod schemas
-│   │   └── sign-in.ts       # Sign-in validation
-│   └── types/               # TypeScript type definitions
+│   │   └── utils/           # General utilities
+│   ├── requests/            # API request functions
+│   │   ├── get-users.ts     # Fetch users list
+│   │   ├── get-user.ts      # Fetch user details
+│   │   └── types.ts         # Request/response types
+│   └── validations/         # Zod schemas
+│       └── sign-in.ts       # Sign-in validation
 ├── next.config.ts           # Next.js configuration
 ├── tsconfig.json            # TypeScript configuration
 ├── eslint.config.mjs        # ESLint configuration
@@ -159,11 +174,8 @@ pnpm install
 ```
 
 3. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
 
-Configure the following variables:
+Create a `.env.local` file in the root directory and configure the following variables:
 ```env
 NEXT_PUBLIC_API_URL=<your-api-url>
 NEXT_PUBLIC_AUTH_API_URL=<your-auth-api-url>
@@ -240,6 +252,22 @@ Next.js Server Actions for server-side operations:
 - Authentication flows
 - Data mutations
 
+#### `/src/requests`
+API request functions and types:
+- Dedicated functions for fetching users and user details
+- Type-safe request/response interfaces
+
+#### `/src/indexedDB`
+Client-side caching with IndexedDB:
+- User details cache management
+- Offline-first data strategies
+- Performance optimization through local storage
+
+#### `/src/hooks`
+Custom React hooks:
+- Form management hooks
+- SWR infinite loading patterns
+
 ### Key Components
 
 #### Authentication
@@ -250,7 +278,9 @@ Next.js Server Actions for server-side operations:
 #### User Management
 - `UsersTable` - Paginated user list with actions
 - `Metrics` - Dashboard analytics
-- User detail views with navigation
+- User detail views with navigation and documents
+- Star rating component for user reviews
+- IndexedDB caching for user details
 
 #### Layout
 - Responsive navigation with `SideNav`
@@ -275,9 +305,19 @@ The application uses a cookie-based authentication system:
 
 ## 🌐 API Integration
 
-### Request Functions
+### Data Fetching Strategies
 
-Two request utilities are available:
+The application uses multiple data fetching approaches:
+
+#### SWR with Infinite Loading
+```typescript
+import { useInfiniteAPI } from '@/hooks/use-infinite-API';
+
+const { data, error, isLoading, size, setSize } = useInfiniteAPI<UserType>({
+  endpoint: '/api/users',
+  fetcherOptions: { useAuth: true },
+});
+```
 
 #### `request()` - Native Fetch
 ```typescript
@@ -300,11 +340,14 @@ const data = await axiosRequest<ResponseType>('/endpoint', {
 ```
 
 ### Features
+- ✅ SWR caching and revalidation
+- ✅ Infinite scroll/pagination support
 - ✅ Automatic retry with exponential backoff
 - ✅ Network error detection
 - ✅ Request timeout (10s default)
 - ✅ Token injection from cookies
 - ✅ Configurable base URLs
+- ✅ IndexedDB client-side caching
 
 ## 🎨 Styling
 
@@ -389,7 +432,8 @@ Ensure all required environment variables are set in your deployment platform:
 5. Open a Pull Request
 
 ### Code Standards
-- Follow ESLint configuration
+- Follow ESLint configuration (enforces absolute imports with `@/`)
+- Maintain proper import ordering (builtin → external → internal → parent → sibling → index)
 - Write meaningful commit messages
 - Ensure TypeScript types are correct
 - Test thoroughly before submitting
