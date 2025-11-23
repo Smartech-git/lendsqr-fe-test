@@ -49,12 +49,14 @@ This project is a comprehensive loan management software dashboard designed for 
 ## 🛠 Tech Stack
 
 ### Core
+
 - **Framework**: [Next.js 16.0.1](https://nextjs.org/) with App Router
 - **React**: 19.2.0
 - **TypeScript**: 5.x
 - **Node**: 20+
 
 ### UI & Styling
+
 - **SCSS**: Custom styling with modular architecture
 - **Radix UI**: Accessible component primitives
   - Dialog, Dropdown Menu, Select
@@ -62,16 +64,19 @@ This project is a comprehensive loan management software dashboard designed for 
 - **Custom Fonts**: Avenir Next (local) + Work Sans (Google Fonts)
 
 ### Forms & Validation
+
 - **React Hook Form**: 7.66.0 - Performant form management
 - **Zod**: 4.1.12 - Schema validation
 - **@hookform/resolvers**: Integration layer
 
 ### Data Fetching
+
 - **SWR**: 2.3.6 - React Hooks for data fetching with caching
 - **Axios**: 1.13.2 - HTTP client with retry logic
 - **Native Fetch API**: Server-side requests with timeout handling
 
 ### Utilities
+
 - **date-fns**: Date manipulation and formatting
 - **currency-symbol-map**: Currency display
 - **class-variance-authority**: Component variant management
@@ -81,6 +86,7 @@ This project is a comprehensive loan management software dashboard designed for 
 - **react-stately**: State management for UI components
 
 ### Development Tools
+
 - **ESLint**: Code linting with Next.js config
 - **TypeScript ESLint**: Type-aware linting
 - **Import Resolver**: TypeScript path resolution
@@ -153,18 +159,21 @@ This project is a comprehensive loan management software dashboard designed for 
 ### Prerequisites
 
 Ensure you have the following installed:
+
 - **Node.js**: 20.x or higher
 - **Package Manager**: npm, yarn, pnpm, or bun
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd chukwu-smart-chukwuemeka-lendsqr-ft-test
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -176,6 +185,7 @@ pnpm install
 3. Set up environment variables:
 
 Create a `.env.local` file in the root directory and configure the following variables:
+
 ```env
 NEXT_PUBLIC_API_URL=<your-api-url>
 NEXT_PUBLIC_AUTH_API_URL=<your-auth-api-url>
@@ -184,6 +194,7 @@ NEXT_PUBLIC_AUTH_API_URL=<your-auth-api-url>
 ### Running the Application
 
 #### Development Mode
+
 ```bash
 npm run dev
 # or
@@ -195,6 +206,7 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 #### Production Build
+
 ```bash
 npm run build
 npm start
@@ -212,13 +224,17 @@ npm start
 ### Code Quality
 
 #### Linting
+
 The project uses ESLint with Next.js and TypeScript configurations:
+
 ```bash
 npm run lint
 ```
 
 #### Type Checking
+
 TypeScript is configured with strict mode enabled. Type check with:
+
 ```bash
 tsc --noEmit
 ```
@@ -230,11 +246,13 @@ tsc --noEmit
 The project follows Next.js 16 App Router conventions with clear separation of concerns:
 
 #### `/src/app`
+
 - Uses route groups `(auth)` for authentication routes
 - Nested `/app` folder for protected application routes
 - Co-located styles in `styles/` directory
 
 #### `/src/components`
+
 - **common**: Shared UI components
 - **content**: Feature-specific components
 - **ui**: Base design system components
@@ -242,40 +260,52 @@ The project follows Next.js 16 App Router conventions with clear separation of c
 - **icons**: SVG sprite management
 
 #### `/src/lib`
+
 Core utilities and helpers:
+
 - **api**: Request handling with retry logic
 - **cookies**: Secure cookie operations
 - **utils**: General utility functions
 
 #### `/src/actions`
+
 Next.js Server Actions for server-side operations:
+
 - Authentication flows
 - Data mutations
 
 #### `/src/requests`
+
 API request functions and types:
+
 - Dedicated functions for fetching users and user details
 - Type-safe request/response interfaces
 
 #### `/src/indexedDB`
+
 Client-side caching with IndexedDB:
+
 - User details cache management
 - Offline-first data strategies
 - Performance optimization through local storage
 
 #### `/src/hooks`
+
 Custom React hooks:
+
 - Form management hooks
 - SWR infinite loading patterns
 
 ### Key Components
 
 #### Authentication
+
 - `SignInForm` - React Hook Form with Zod validation
 - Server-side validation and cookie management
 - JWT token handling with jose
 
 #### User Management
+
 - `UsersTable` - Paginated user list with actions
 - `Metrics` - Dashboard analytics
 - User detail views with navigation and documents
@@ -283,6 +313,7 @@ Custom React hooks:
 - IndexedDB caching for user details
 
 #### Layout
+
 - Responsive navigation with `SideNav`
 - `TopNav` with user profile dropdown
 - Breadcrumb navigation
@@ -298,6 +329,7 @@ The application uses a cookie-based authentication system:
 5. Protected routes check authentication status
 
 ### Cookie Configuration
+
 - Key: `Lendsqr-key`
 - HTTP-only: Yes
 - Secure: Production only
@@ -310,36 +342,40 @@ The application uses a cookie-based authentication system:
 The application uses multiple data fetching approaches:
 
 #### SWR with Infinite Loading
+
 ```typescript
-import { useInfiniteAPI } from '@/hooks/use-infinite-API';
+import { useInfiniteAPI } from "@/hooks/use-infinite-API";
 
 const { data, error, isLoading, size, setSize } = useInfiniteAPI<UserType>({
-  endpoint: '/api/users',
+  endpoint: "/api/users",
   fetcherOptions: { useAuth: true },
 });
 ```
 
 #### `request()` - Native Fetch
+
 ```typescript
-const data = await request<ResponseType>('/endpoint', {
-  method: 'POST',
-  data: { key: 'value' },
+const data = await request<ResponseType>("/endpoint", {
+  method: "POST",
+  data: { key: "value" },
   useAuth: true,
   retry: 3,
-  delay: 3000
+  delay: 3000,
 });
 ```
 
 #### `axiosRequest()` - Axios Client
+
 ```typescript
-const data = await axiosRequest<ResponseType>('/endpoint', {
-  method: 'GET',
+const data = await axiosRequest<ResponseType>("/endpoint", {
+  method: "GET",
   useAuth: true,
-  axiosConfig: { timeout: 5000 }
+  axiosConfig: { timeout: 5000 },
 });
 ```
 
 ### Features
+
 - ✅ SWR caching and revalidation
 - ✅ Infinite scroll/pagination support
 - ✅ Automatic retry with exponential backoff
@@ -371,57 +407,82 @@ styles/
 ```
 
 ### Fonts
+
 - **Primary**: Avenir Next (local, WOFF2)
   - Weights: 400, 500, 600, 700
 - **Secondary**: Work Sans (Google Fonts)
   - Weights: 400, 500, 600, 700
 
 ### CSS Variables
+
 Design tokens are defined in `/base` and used throughout the application for consistent theming.
 
 ## 🔒 Type Safety
 
 ### TypeScript Configuration
+
 - **Strict Mode**: Enabled
 - **Target**: ES2017
 - **JSX**: react-jsx (React 19)
 - **Path Aliases**: `@/*` → `./src/*`
 
 ### Validation Schemas
+
 Zod schemas in `/src/validations` ensure runtime type safety:
+
 ```typescript
-export const signInSchema = z.object({
-  email: z.email("Please enter a valid email address"),
-  password: z.string().trim().min(1, "Password is required"),
-}).strict();
+export const signInSchema = z
+  .object({
+    email: z.email("Please enter a valid email address"),
+    password: z.string().trim().min(1, "Password is required"),
+  })
+  .strict();
 ```
 
 ## 🚢 Deployment
 
-### Vercel (Recommended)
+### Netlify Deployment (Current and Recommended)
 
-The easiest deployment method:
+This project is deployed on Netlify. Below are the basic steps for a similar deployment, or if you wish to deploy your own fork:
 
-1. Push code to GitHub/GitLab/Bitbucket
-2. Import project to [Vercel](https://vercel.com)
-3. Configure environment variables
-4. Deploy
+1. Push your code to a GitHub/GitLab/Bitbucket repository.
+2. Sign in to [Netlify](https://app.netlify.com/) and select "Add new site" > "Import an existing project".
+3. Connect your repository and configure build settings:
+   - **Build Command**: `npm run build`
+   - **Publish directory**: `.next`
+   - **Install Command**: `npm install` (or `yarn install`/`pnpm install` if using another manager)
+   - **Base directory**: leave blank or set to root (`/`)
+4. In "Environment variables", add all required environment variables:
+   - `NEXT_PUBLIC_API_URL`
+   - `NEXT_PUBLIC_AUTH_API_URL`
+   - Any other secrets your build requires
+5. Start the deploy process. Netlify will create, build, and host the site for you.
 
-### Manual Deployment
+**Production Deployment URL:**  
+_(Replace the URL below if you have your own Netlify deployment)_
+
+- https://chukwu-smart-lendsqr-fe-test.netlify.app
+
+### Manual Static Build & Netlify Deploy
+
+You can also manually create a production build and deploy via Netlify CLI:
 
 ```bash
-# Build the application
 npm run build
-
-# Start production server
-npm start
+npx netlify deploy --prod --dir=.next
 ```
 
+or use the Netlify web dashboard to drag-and-drop your `.next` directory as the publish directory.
+
+> **Note on SSR and Next.js:**  
+> While Netlify supports Next.js SSR and API routes, please ensure your Netlify configuration (`netlify.toml`) matches your needs. By default, this project builds with Next.js' App Router support.
+
 ### Environment Variables
-Ensure all required environment variables are set in your deployment platform:
+
+Set all required environment variables on the Netlify dashboard (Site settings → Environment variables), including but not limited to:
+
 - `NEXT_PUBLIC_API_URL`
 - `NEXT_PUBLIC_AUTH_API_URL`
-- Any additional secrets
 
 ## 🤝 Contributing
 
@@ -432,6 +493,7 @@ Ensure all required environment variables are set in your deployment platform:
 5. Open a Pull Request
 
 ### Code Standards
+
 - Follow ESLint configuration (enforces absolute imports with `@/`)
 - Maintain proper import ordering (builtin → external → internal → parent → sibling → index)
 - Write meaningful commit messages
