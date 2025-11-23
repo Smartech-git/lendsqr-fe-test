@@ -28,7 +28,7 @@
 
 ## 🎯 Overview
 
-This project is a comprehensive loan management software dashboard designed for Lendsqr. It provides a robust interface for managing users, viewing metrics, and handling authentication with a focus on performance, type safety, and user experience.
+Frontend Engineering test documentation for Lendsqr
 
 ## ✨ Features
 
@@ -499,10 +499,6 @@ Set all required environment variables on the Netlify dashboard (Site settings �
 - Write meaningful commit messages
 - Ensure TypeScript types are correct
 - Test thoroughly before submitting
-
-## 📄 License
-
-This project is private and proprietary to Lendsqr.
 
 ---
 
